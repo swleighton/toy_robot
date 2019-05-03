@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "toy_robot", "toy_robot\toy_robot.csproj", "{AB78016A-9B3C-4D99-9D42-2CD3FDB85FA6}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{EEE966D0-2ACC-4FE2-94DA-B42900D698E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,5 +15,9 @@ Global
 		{AB78016A-9B3C-4D99-9D42-2CD3FDB85FA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AB78016A-9B3C-4D99-9D42-2CD3FDB85FA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AB78016A-9B3C-4D99-9D42-2CD3FDB85FA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EEE966D0-2ACC-4FE2-94DA-B42900D698E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEE966D0-2ACC-4FE2-94DA-B42900D698E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEE966D0-2ACC-4FE2-94DA-B42900D698E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEE966D0-2ACC-4FE2-94DA-B42900D698E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
