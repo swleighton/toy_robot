@@ -6,7 +6,7 @@ namespace toy_robot
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Console.WriteLine("**Toy Robot**");
             Command command = new Command(new Robot());
             while (true)
             {
