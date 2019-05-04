@@ -28,7 +28,7 @@ namespace toy_robot
             }
         }
 
-        public string TurnLeft()
+        public string TurnRight()
         {
             if (currentDirection == directions.Count - 1)
             {
@@ -42,7 +42,7 @@ namespace toy_robot
             return ToString();
         }
 
-        public string TurnRight()
+        public string TurnLeft()
         {
             if (currentDirection == 0)
             {

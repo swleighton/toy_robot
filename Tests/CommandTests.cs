@@ -7,13 +7,47 @@ namespace Tests
     public class CommandTests
     {
         [Fact]
+        public void MoveEndToEndTest()
+        {
+            Command command = new Command(new Robot());
+
+            command.Execute("PLACE 0,0,NORTH");
+            command.Execute("MOVE");
+            Assert.Equal("Output: 0,1,NORTH", command.Execute("REPORT"));
+        }
+
+        [Fact]
+        public void DirectionEndToEndTest()
+        {
+            Command command = new Command(new Robot());
+
+            command.Execute("PLACE 0,0,NORTH");
+            command.Execute("LEFT");
+            Assert.Equal("Output: 0,0,WEST", command.Execute("REPORT"));
+        }
+
+        [Fact]
+        public void CompleteEndToEndTest() 
+        { 
+             Command command = new Command(new Robot());
+
+            command.Execute("PLACE 1,2,EAST");
+            command.Execute("MOVE");
+            command.Execute("MOVE");
+            command.Execute("LEFT");
+            command.Execute("MOVE");
+
+            Assert.Equal("Output: 3,3,NORTH", command.Execute("REPORT"));
+        }
+
+        [Fact]
         public void PlaceCommandPlacesRobot()
         {
             Robot robot = new Robot();
             Command command = new Command(robot);
 
-            Assert.Equal("Output: 0,0,NORTH", command.Execute("PLACE 0,0,NORTH"));
-            Assert.Equal("Output: 2,1,WEST", command.Execute("PLACE 2,1,WEST"));
+            Assert.Equal("Robot was placed at: 0,0,NORTH", command.Execute("PLACE 0,0,NORTH"));
+            Assert.Equal("Robot was placed at: 2,1,WEST", command.Execute("PLACE 2,1,WEST"));
         }
 
         [Fact]
@@ -24,8 +58,8 @@ namespace Tests
 
             robot.Place(0, 0, "NORTH");
 
-            Assert.Equal("Output: 0,1,NORTH", command.Execute("MOVE"));
-            Assert.Equal("Output: 0,2,NORTH", command.Execute("MOVE"));
+            Assert.Equal("Robot moved to: 0,1,NORTH", command.Execute("MOVE"));
+            Assert.Equal("Robot moved to: 0,2,NORTH", command.Execute("MOVE"));
         }
 
         [Fact]
@@ -36,8 +70,8 @@ namespace Tests
 
             robot.Place(0, 0, "NORTH");
 
-            Assert.Equal("EAST", command.Execute("LEFT"));
-            Assert.Equal("SOUTH", command.Execute("LEFT"));
+            Assert.Equal("Robot is now facing WEST", command.Execute("LEFT"));
+            Assert.Equal("Robot is now facing SOUTH", command.Execute("LEFT"));
         }
 
         [Fact]
@@ -48,8 +82,8 @@ namespace Tests
 
             Command command = new Command(robot);
 
-            Assert.Equal("WEST", command.Execute("RIGHT"));
-            Assert.Equal("SOUTH", command.Execute("RIGHT"));
+            Assert.Equal("Robot is now facing EAST", command.Execute("RIGHT"));
+            Assert.Equal("Robot is now facing SOUTH", command.Execute("RIGHT"));
         }
 
         [Fact]

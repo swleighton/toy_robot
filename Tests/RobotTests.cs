@@ -6,8 +6,6 @@ namespace Tests
 {
     public class RobotTests
     {
-        private readonly string InvalidDirectionError = "Invalid direction - must be one of NORTH, EAST, SOUTH, WEST";
-
         [Fact]
         public void ThrowsRobotNotPlacedExceptionWhenTurningLeftWithoutPlacement()
         {
@@ -41,7 +39,7 @@ namespace Tests
         {
             Robot robot = new Robot();
             robot.Place(1, 2, "NORTH");
-            Assert.Equal("Output: 1,2,NORTH", robot.Location());
+            Assert.Equal("1,2,NORTH", robot.Location());
         }
 
         [Fact]
@@ -52,27 +50,27 @@ namespace Tests
         }
 
         [Fact]
-        public void TurnsLeftCorrectly()
-        {
-            Robot robot = new Robot();
-            robot.Place(0, 0, "NORTH");
-
-            Assert.Equal("EAST", robot.TurnLeft());
-            Assert.Equal("SOUTH", robot.TurnLeft());
-            Assert.Equal("WEST", robot.TurnLeft());
-            Assert.Equal("NORTH", robot.TurnLeft());
-        }
-
-        [Fact]
         public void TurnsRightCorrectly()
         {
             Robot robot = new Robot();
             robot.Place(0, 0, "NORTH");
 
-            Assert.Equal("WEST", robot.TurnRight());
-            Assert.Equal("SOUTH", robot.TurnRight());
             Assert.Equal("EAST", robot.TurnRight());
+            Assert.Equal("SOUTH", robot.TurnRight());
+            Assert.Equal("WEST", robot.TurnRight());
             Assert.Equal("NORTH", robot.TurnRight());
+        }
+
+        [Fact]
+        public void TurnsLeftCorrectly()
+        {
+            Robot robot = new Robot();
+            robot.Place(0, 0, "NORTH");
+
+            Assert.Equal("WEST", robot.TurnLeft());
+            Assert.Equal("SOUTH", robot.TurnLeft());
+            Assert.Equal("EAST", robot.TurnLeft());
+            Assert.Equal("NORTH", robot.TurnLeft());
         }
 
         [Fact]

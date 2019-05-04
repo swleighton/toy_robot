@@ -24,25 +24,25 @@ namespace Tests
         }
 
         [Fact]
-        public void TurnsLeftCorrectly()
-        {
-            Direction direction = new Direction("NORTH");
-
-            Assert.Equal("EAST", direction.TurnLeft());
-            Assert.Equal("SOUTH", direction.TurnLeft());;
-            Assert.Equal("WEST", direction.TurnLeft());
-            Assert.Equal("NORTH", direction.TurnLeft());
-        }
-
-        [Fact]
         public void TurnsRightCorrectly()
         {
             Direction direction = new Direction("NORTH");
 
-            Assert.Equal("WEST", direction.TurnRight());
-            Assert.Equal("SOUTH", direction.TurnRight());
             Assert.Equal("EAST", direction.TurnRight());
+            Assert.Equal("SOUTH", direction.TurnRight());;
+            Assert.Equal("WEST", direction.TurnRight());
             Assert.Equal("NORTH", direction.TurnRight());
+        }
+
+        [Fact]
+        public void TurnsLeftCorrectly()
+        {
+            Direction direction = new Direction("NORTH");
+
+            Assert.Equal("WEST", direction.TurnLeft());
+            Assert.Equal("SOUTH", direction.TurnLeft());
+            Assert.Equal("EAST", direction.TurnLeft());
+            Assert.Equal("NORTH", direction.TurnLeft());
         }
     }
 }

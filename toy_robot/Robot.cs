@@ -16,8 +16,8 @@ namespace toy_robot
         private readonly int MaxXPosition = 5;
         private readonly int MaxYPosition = 5;
         private Direction direction;
-        private readonly string PositionNotOnBoardExceptionMessage = "";
-        private readonly string RobotNotPlacedExceptionMessage = ""; 
+        private readonly string PositionNotOnBoardExceptionMessage = "This action was skipped as the robot would be off of the board";
+        private readonly string RobotNotPlacedExceptionMessage = "Robot must be placed on the board to undertake this action"; 
         private enum TurnDirection
         {
             LEFT,
@@ -48,7 +48,7 @@ namespace toy_robot
         {
             if (Placed)
             {
-                return $"Output: {XPosition},{YPosition},{direction}";
+                return $"{XPosition},{YPosition},{direction}";
             }
             else
             {

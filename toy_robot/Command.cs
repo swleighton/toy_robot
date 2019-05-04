@@ -3,7 +3,7 @@ namespace toy_robot
 {
     public class Command
     {
-        private string invalidCommandExceptionMessage = "";
+        private string invalidCommandExceptionMessage = "Invalid command";
         private Robot robot;
 
         public Command(Robot robot) => this.robot = robot;
@@ -15,24 +15,28 @@ namespace toy_robot
             if (command == "MOVE")
             {
                 robot.Move();
-                return robot.Location();
+                return $"Robot moved to: {robot.Location()}";
             }
             else if (command == "LEFT")
             {
-                return robot.TurnLeft();
+                return $"Robot is now facing {robot.TurnLeft()}";
             }
             else if (command == "RIGHT")
             {
-                return robot.TurnRight();
+                return $"Robot is now facing {robot.TurnRight()}";
             }
             else if (command.StartsWith("PLACE"))
             {
-                 buildPlaceArgsFromCommand(command, robot);
-                return robot.Location();
+                 BuildPlaceArgsFromCommand(command);
+                return $"Robot was placed at: {robot.Location()}";
             }
             else if (command == "REPORT")
             {
-                return robot.Location();
+                return $"Output: {robot.Location()}";
+            }
+            else if (command == "EXIT"){
+                Environment.Exit(0);
+                return "";
             }
             else
             {
@@ -42,7 +46,7 @@ namespace toy_robot
  
         }
 
-        private void buildPlaceArgsFromCommand(string command, Robot robot)
+        private void BuildPlaceArgsFromCommand(string command)
         {
             try
             {
