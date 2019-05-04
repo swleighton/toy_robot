@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace toy_robot
 {
     public class Robot
@@ -7,8 +8,6 @@ namespace toy_robot
         public int XPosition { get; private set; }
         public bool Placed { get; private set; }
 
-        private readonly int MaxXPosition = 5;
-        private readonly int MaxYPosition = 5;
         private Direction direction;
         private readonly string PositionNotOnBoardExceptionMessage = "This action was skipped as the robot would be off of the board";
         private readonly string RobotNotPlacedExceptionMessage = "Robot must be placed on the board to undertake this action";
@@ -42,7 +41,7 @@ namespace toy_robot
         public void Place(int xPosition, int yPosition, string direction)
         {
 
-            if (xPosition >= 0 && xPosition <= MaxXPosition && yPosition >= 0 && yPosition <= MaxYPosition)
+            if (xPosition >= 0 && xPosition <= Board.xWidth && yPosition >= 0 && yPosition <= Board.yWidth)
             {
                 this.direction = new Direction(direction);
                 this.XPosition = xPosition;
@@ -85,10 +84,10 @@ namespace toy_robot
                 switch (direction.ToString())
                 {
                     case "NORTH":
-                        YPosition = UpdatePosition(YPosition, MaxYPosition, 1);
+                        YPosition = UpdatePosition(YPosition, Board.yWidth, 1);
                         break;
                     case "EAST":
-                        XPosition = UpdatePosition(XPosition, MaxXPosition, 1);
+                        XPosition = UpdatePosition(XPosition, Board.xWidth, 1);
                         break;
                     case "SOUTH":
                         YPosition = UpdatePosition(YPosition, 0, -1);
