@@ -1,6 +1,6 @@
-﻿#Toy Robot
+﻿# Toy Robot
 
-#Description:
+## Description:
 - The application is a simulation of a toy robot moving on a square tabletop, of dimensions 5 units x 5 units
 - There are no other obstructions on the table surface
 - The robot is free to roam around the surface of the table, but is prevented from falling to destruction
@@ -18,11 +18,11 @@
 - The toy robot must not fall off the table during movement. This also includes the initial placement of the toy robot. Any move that would cause the robot to fall is ignored
 
  
-##Setup
+## Setup
 1. Install the [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core/2.2).
 2. Clone the solution to your local machine
 
-##Running the app
+## Running the app
 1. Setup the application
 2. Using a terminal, navigate to the `toy-robot` directory
 3. Run the application by typing `dotnet run`
@@ -32,7 +32,7 @@
 2. Using a terminal, navigate to the `toy-robot.tests` directory
 3. Run the unit tests by typing `dotnet test`
  
-##Example Input and Output:
+## Example Input and Output:
 ```
 PLACE 0,0,NORTH
 MOVE
