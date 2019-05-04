@@ -39,7 +39,7 @@ namespace Tests
         }
 
         [Fact]
-        public void ReturnsCorrectListOfDirections()
+        public void ReturnsCorrectListOfDirectionsInCorrectOrder()
         {
             Assert.Equal(
                 new List<string>(new string[]{
