@@ -13,25 +13,22 @@ namespace toy_robot
 
         private int currentDirection;
 
-        public Direction(string direction)
-        {
-            setDirection(direction);
-        }
+        public Direction(string direction) => SetDirection(direction);
 
-        public void setDirection(string direction)
+        public void SetDirection(string direction)
         {
-            int directionIndex = validateDirection(direction.ToUpper().Trim());
+            int directionIndex = ValidateDirection(direction.ToUpper().Trim());
 
             if (directionIndex != -1)
             {
                 currentDirection = directionIndex;
             } else
             {
-            throw new InvalidDirectionException($"Invalid direction - must be one of {string.Join(", ", getValidDirections().ToArray())}");
+            throw new InvalidDirectionException($"Invalid direction - must be one of {string.Join(", ", GetValidDirections().ToArray())}");
             }
         }
 
-        public void left()
+        public string TurnLeft()
         {
             if (currentDirection == directions.Count - 1)
             {
@@ -41,33 +38,28 @@ namespace toy_robot
             {
                 currentDirection++;
             }
+
+            return ToString();
         }
 
-        public void right()
+        public string TurnRight()
         {
             if (currentDirection == 0)
             {
-                currentDirection = directions.Count -1;
+                currentDirection = directions.Count - 1;
             }
             else
             {
                 currentDirection--;
             }
+
+            return ToString();
         }
 
-        public static int validateDirection(string direction)
-        {
-            return directions.IndexOf(direction.ToUpper().Trim());
-        }
+        public static int ValidateDirection(string direction) => directions.IndexOf(direction.ToUpper().Trim());
 
-        public string toString()
-        {
-            return directions[currentDirection];
-        }
+        public override string ToString() => directions[currentDirection];
 
-        public List<string> getValidDirections()
-        {
-            return directions;
-        }
+        public List<string> GetValidDirections() => directions;
     }
 }

@@ -7,6 +7,8 @@ namespace toy_robot
         static void Main(string[] args)
         {
             Console.WriteLine("Hello World!");
+            Direction blah = new Direction("hhshd");
+            //blah.setDirection("hdfdgdhd");
         }
     }
 }

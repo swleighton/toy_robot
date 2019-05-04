@@ -12,7 +12,7 @@ namespace Tests
         public void InvalidSetDirectionThrowsInvalidDirectionError()
         {
             Direction dir = new Direction("NORTH");
-            InvalidDirectionException exception = Assert.Throws<InvalidDirectionException>(() => dir.setDirection("NOT A DIRECTION"));
+            InvalidDirectionException exception = Assert.Throws<InvalidDirectionException>(() => dir.SetDirection("NOT A DIRECTION"));
             Assert.Equal(InvalidDirectionError, exception.Message);
         }
 
@@ -27,28 +27,22 @@ namespace Tests
         public void TurnsLeftCorrectly()
         {
             Direction direction = new Direction("NORTH");
-            direction.left();
-            Assert.Equal("EAST", direction.toString());
-            direction.left();
-            Assert.Equal("SOUTH", direction.toString());
-            direction.left();
-            Assert.Equal("WEST", direction.toString());
-            direction.left();
-            Assert.Equal("NORTH", direction.toString());
+
+            Assert.Equal("EAST", direction.TurnLeft());
+            Assert.Equal("SOUTH", direction.TurnLeft());;
+            Assert.Equal("WEST", direction.TurnLeft());
+            Assert.Equal("NORTH", direction.TurnLeft());
         }
 
         [Fact]
         public void TurnsRightCorrectly()
         {
             Direction direction = new Direction("NORTH");
-            direction.right();
-            Assert.Equal("WEST", direction.toString());
-            direction.right();
-            Assert.Equal("SOUTH", direction.toString());
-            direction.right();
-            Assert.Equal("EAST", direction.toString());
-            direction.right();
-            Assert.Equal("NORTH", direction.toString());
+
+            Assert.Equal("WEST", direction.TurnRight());
+            Assert.Equal("SOUTH", direction.TurnRight());
+            Assert.Equal("EAST", direction.TurnRight());
+            Assert.Equal("NORTH", direction.TurnRight());
         }
     }
 }
