@@ -27,14 +27,15 @@ namespace toy_robot
             }
             else if (command.StartsWith("PLACE"))
             {
-                 BuildPlaceArgsFromCommand(command);
+                BuildPlaceArgsFromCommand(command);
                 return $"Robot was placed at: {robot.Location()}";
             }
             else if (command == "REPORT")
             {
                 return $"Output: {robot.Location()}";
             }
-            else if (command == "EXIT"){
+            else if (command == "EXIT")
+            {
                 Environment.Exit(0);
                 return "";
             }
@@ -43,7 +44,7 @@ namespace toy_robot
                 throw new InvalidCommandException(invalidCommandExceptionMessage);
             }
 
- 
+
         }
 
         private void BuildPlaceArgsFromCommand(string command)
@@ -51,8 +52,8 @@ namespace toy_robot
             try
             {
 
-                string[] commandaArgsSplit = command.Split(" ")[1].Split(",");
-                robot.Place(int.Parse(commandaArgsSplit[0]), int.Parse(commandaArgsSplit[1]), commandaArgsSplit[2]);
+                string[] commandArgsSplit = command.Split(" ")[1].Split(",");
+                robot.Place(int.Parse(commandArgsSplit[0]), int.Parse(commandArgsSplit[1]), commandArgsSplit[2]);
             }
             catch (Exception)
             {

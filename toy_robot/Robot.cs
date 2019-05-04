@@ -17,7 +17,7 @@ namespace toy_robot
         private readonly int MaxYPosition = 5;
         private Direction direction;
         private readonly string PositionNotOnBoardExceptionMessage = "This action was skipped as the robot would be off of the board";
-        private readonly string RobotNotPlacedExceptionMessage = "Robot must be placed on the board to undertake this action"; 
+        private readonly string RobotNotPlacedExceptionMessage = "Robot must be placed on the board to undertake this action";
         private enum TurnDirection
         {
             LEFT,
@@ -75,17 +75,18 @@ namespace toy_robot
                         XPosition = Move(XPosition, 0, -1);
                         break;
                 }
-            } else
+            }
+            else
             {
                 throw new RobotNotPlacedException(RobotNotPlacedExceptionMessage);
             }
         }
 
-        private int Move(int position, int bound, int moveAmmount)
+        private int Move(int position, int bound, int moveAmount)
         {
-            if ((position > bound && moveAmmount < 0) || (position < bound && moveAmmount > 0))
+            if ((position > bound && moveAmount < 0) || (position < bound && moveAmount > 0))
             {
-                return position + moveAmmount;
+                return position + moveAmount;
             }
             else
             {
@@ -95,7 +96,8 @@ namespace toy_robot
 
         private string Turn(TurnDirection turnDirection)
         {
-            if (Placed) {
+            if (Placed)
+            {
                 if (turnDirection == TurnDirection.LEFT)
                 {
                     return direction.TurnLeft();
@@ -108,10 +110,12 @@ namespace toy_robot
                 {
                     return direction.ToString();
                 }
-            } else {
+            }
+            else
+            {
                 throw new RobotNotPlacedException(RobotNotPlacedExceptionMessage);
             }
-    }
+        }
 
     }
 }
