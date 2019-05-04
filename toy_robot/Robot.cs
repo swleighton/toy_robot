@@ -52,7 +52,7 @@ namespace toy_robot
             }
             else
             {
-                throw new PositionNotOnBoardException(PositionNotOnBoardExceptionMessage);
+                throw new RobotNotPlacedException(RobotNotPlacedExceptionMessage);
             }
         }
 
