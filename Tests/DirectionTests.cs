@@ -1,20 +1,13 @@
 using System;
 using Xunit;
 using toy_robot;
+using System.Collections.Generic;
 
 namespace Tests
 {
     public class DirectionTests
     {
         string InvalidDirectionError = "Invalid direction - must be one of NORTH, EAST, SOUTH, WEST";
-
-        [Fact]
-        public void InvalidSetDirectionThrowsInvalidDirectionError()
-        {
-            Direction dir = new Direction("NORTH");
-            InvalidDirectionException exception = Assert.Throws<InvalidDirectionException>(() => dir.SetDirection("NOT A DIRECTION"));
-            Assert.Equal(InvalidDirectionError, exception.Message);
-        }
 
         [Fact]
         public void InvalidDirectionInitThrowsInvalidDirectionError()
@@ -29,7 +22,7 @@ namespace Tests
             Direction direction = new Direction("NORTH");
 
             Assert.Equal("EAST", direction.TurnRight());
-            Assert.Equal("SOUTH", direction.TurnRight());;
+            Assert.Equal("SOUTH", direction.TurnRight()); ;
             Assert.Equal("WEST", direction.TurnRight());
             Assert.Equal("NORTH", direction.TurnRight());
         }
@@ -44,5 +37,20 @@ namespace Tests
             Assert.Equal("EAST", direction.TurnLeft());
             Assert.Equal("NORTH", direction.TurnLeft());
         }
+
+        [Fact]
+        public void ReturnsCorrectListOfDirections()
+        {
+            Assert.Equal(
+                new List<string>(new string[]{
+                    "NORTH",
+                    "EAST",
+                    "SOUTH",
+                    "WEST"
+                }),
+                Direction.GetValidDirections()
+            );
+        }
+
     }
 }
