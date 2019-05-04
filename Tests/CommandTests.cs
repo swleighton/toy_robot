@@ -38,6 +38,13 @@ namespace Tests
             command.Execute("MOVE");
 
             Assert.Equal("Output: 3,3,NORTH", command.Execute("REPORT"));
+
+            command.Execute("PLACE 0,0,EAST");
+            command.Execute("MOVE");
+            command.Execute("MOVE");
+            command.Execute("RIGHT");
+
+            Assert.Equal("Output: 2,0,SOUTH", command.Execute("REPORT"));
         }
 
         [Fact]
