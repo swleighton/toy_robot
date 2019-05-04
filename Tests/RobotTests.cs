@@ -23,6 +23,20 @@ namespace Tests
         }
 
         [Fact]
+        public void ThrowsRobotNotPlacedExceptionWhenMovingWithoutPlacement()
+        {
+            Robot robot = new Robot();
+            Assert.Throws<RobotNotPlacedException>(() => robot.Move());
+        }
+
+        [Fact]
+        public void ThrowsRobotNotPlacedExceptionWhenLocationIsOutputWithoutPlacement()
+        {
+            Robot robot = new Robot();
+            Assert.Throws<RobotNotPlacedException>(() => robot.Location());
+        }
+
+        [Fact]
         public void PlacesCorrectly()
         {
             Robot robot = new Robot();
