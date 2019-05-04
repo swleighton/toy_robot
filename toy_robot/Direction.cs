@@ -11,55 +11,73 @@ namespace toy_robot
             "WEST"
         });
 
-        private int currentDirection;
+        private int currentDirectionIndex;
 
-        public Direction(string direction) => SetDirection(direction);
-
-        public void SetDirection(string direction)
+        /// <summary>
+        /// Validates and sets the  current direction 
+        /// </summary>
+        /// <param name="direction">valid direction string</param>  
+        ///<exception cref="InvalidDirectionException">If a valid direction is not provided </exception>
+        public Direction(string direction)
         {
-            int directionIndex = ValidateDirection(direction.ToUpper().Trim());
+            int directionIndex = directions.IndexOf(direction.ToUpper().Trim());
 
             if (directionIndex != -1)
             {
-                currentDirection = directionIndex;
-            } else
+                currentDirectionIndex = directionIndex;
+            }
+            else
             {
-            throw new InvalidDirectionException($"Invalid direction - must be one of {string.Join(", ", GetValidDirections().ToArray())}");
+                throw new InvalidDirectionException($"Invalid direction - must be one of {string.Join(", ", GetValidDirections().ToArray())}");
             }
         }
 
+        /// <summary>
+        /// Sets the direction to the right of the current direction
+        /// </summary>
+        /// <returns>Returns the name of the current direction as a string</returns>  
         public string TurnRight()
         {
-            if (currentDirection == directions.Count - 1)
+            if (currentDirectionIndex == directions.Count - 1)
             {
-                currentDirection = 0;
+                currentDirectionIndex = 0;
             }
             else
             {
-                currentDirection++;
+                currentDirectionIndex++;
             }
 
             return ToString();
         }
 
+        /// <summary>
+        /// Sets the direction to the left of the current direction
+        /// </summary>
+        /// <returns>Returns the name of the current direction as a string</returns>  
         public string TurnLeft()
         {
-            if (currentDirection == 0)
+            if (currentDirectionIndex == 0)
             {
-                currentDirection = directions.Count - 1;
+                currentDirectionIndex = directions.Count - 1;
             }
             else
             {
-                currentDirection--;
+                currentDirectionIndex--;
             }
 
             return ToString();
         }
 
-        public static int ValidateDirection(string direction) => directions.IndexOf(direction.ToUpper().Trim());
+        /// <summary>
+        /// Gets name of the current direction
+        /// </summary>
+        /// <returns>Returns the name of the current direction as a string</returns> 
+        public override string ToString() => directions[currentDirectionIndex];
 
-        public override string ToString() => directions[currentDirection];
-
-        public List<string> GetValidDirections() => directions;
+        /// <summary>
+        /// A list of valid directions
+        /// </summary>
+        /// <returns>Returns a List<String> of valid directions ordered right from NORTH</returns> 
+        public static List<string> GetValidDirections() => directions;
     }
 }
