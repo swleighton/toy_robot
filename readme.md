@@ -16,8 +16,9 @@
 - The first valid command to the robot is a PLACE command, after that, any sequence of commands may be issued, in any order, including another PLACE command. The application will discard all commands in the sequence until a valid PLACE command has been executed
 - Input is from the command line only
 - The toy robot will not fall off the table during movement. This includes the initial placement of the toy robot. Any move that would cause the robot to fall is ignored
-
  
+![](cli.png "CLI Output Example")
+
 ## Setup
 1. Install the [.NET Core SDK](https://dotnet.microsoft.com/download/dotnet-core/2.2)
 2. Clone the solution to your local machine
