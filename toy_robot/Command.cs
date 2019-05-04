@@ -3,11 +3,18 @@ namespace toy_robot
 {
     public class Command
     {
-        private string invalidCommandExceptionMessage = "Invalid command";
+        private readonly string invalidCommandExceptionMessage = "Invalid command";
         private Robot robot;
 
         public Command(Robot robot) => this.robot = robot;
 
+        /// <summary>
+        /// Parses the passed command to call the correct robot method
+        /// </summary>
+        /// <param name="command">The command string to be parsed</param>  
+        /// <exception cref="InvalidCommandException">If a valid command is not supplied</exception>
+        /// <exception cref="RobotNotPlacedException">If any command other than place and exit is supplied before the robot is placed</exception>
+        /// <exception cref="PositionNotOnBoardException">If place or move command is supplied that will result in the robot not being/remaining on the board</exception>
         public string Execute(string command)
         {
             command = command.ToUpper().Trim();
@@ -43,10 +50,13 @@ namespace toy_robot
             {
                 throw new InvalidCommandException(invalidCommandExceptionMessage);
             }
-
-
         }
 
+        /// <summary>
+        /// Parses a place command and calls the robot's place method
+        /// </summary>
+        /// <param name="command">The Place command string to be parsed into the robots place method params</param>  
+        ///<exception cref="InvalidCommandException">If a valid place command is not supplied</exception>
         private void BuildPlaceArgsFromCommand(string command)
         {
             try
